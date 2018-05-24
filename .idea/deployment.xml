@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData">
+    <serverData>
+      <paths name="Indierogue">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="arctic-crow.com">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="krysztofiak.de">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/daniel.krysztofiak.de" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath path="/.cache" />
+            <excludedPath path="/.wp-cli" />
+            <excludedPath path="/bin" />
+            <excludedPath path="/dev" />
+            <excludedPath path="/error_docs" />
+            <excludedPath path="/etc" />
+            <excludedPath path="/lib" />
+            <excludedPath path="/lib64" />
+            <excludedPath path="/logs" />
+            <excludedPath path="/snapshots" />
+            <excludedPath path="/tmp" />
+            <excludedPath path="/usr" />
+            <excludedPath path="/var" />
+            <excludedPath local="true" path="$PROJECT_DIR$/.idea" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>
