@@ -2,14 +2,14 @@
 <project version="4">
   <component name="PublishConfigData" serverName="krysztofiak.de">
     <serverData>
-      <paths name="arctic-crow.com">
+      <paths name="Indierogue">
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
-      <paths name="indierogue.net">
+      <paths name="arctic-crow.com">
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />
@@ -21,6 +21,10 @@
           <mappings>
             <mapping deploy="/daniel.krysztofiak.de" local="$PROJECT_DIR$" web="/" />
           </mappings>
+          <excludedPaths>
+            <excludedPath local="true" path="$PROJECT_DIR$/.idea" />
+            <excludedPath local="true" path="$PROJECT_DIR$/raw" />
+          </excludedPaths>
         </serverdata>
       </paths>
     </serverData>

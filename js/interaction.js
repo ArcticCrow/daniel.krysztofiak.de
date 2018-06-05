@@ -1,9 +1,9 @@
-let pages = [ // Initialized after load
-    {id: "default", nav: undefined, content: undefined},
-    {id: "programming", nav: undefined, content: undefined},
-    {id: "game-development", nav: undefined, content: undefined},
-    {id: "game-design", nav: undefined, content: undefined}
-];
+let pages = { // Initialized after load
+    "default": {nav: undefined, content: undefined},
+    "programming": {nav: undefined, content: undefined},
+    "game-development": {nav: undefined, content: undefined},
+    "game-design": {nav: undefined, content: undefined}
+};
 let pageNavs = [];
 let contentNavs = [];
 let $activePageID;
@@ -12,20 +12,21 @@ let $topBtn;
 
 $(function() {
     // Document ready
-    console.log(pages);
     $topBtn = $("#topBtn");
-    $activePageID = $('#navbarSupportedContent .active')[0];
+    $activePageID = $('#pageNav .active').attr("href").substr(1);
     console.log($activePageID);
 
-    for (let index in pages) {
-        let p = pages[index];
-        p.nav = $('#navbarSupportedContent a[href="#' + p.id + '"]')[0];
-        p.content = $("#" + p.id)[0];
+    for (let pageName in pages) {
+        let p = pages[pageName];
+        p.nav = $('#pageNav a[href="#' + pageName + '"]')[0];
+        p.content = $("#" + pageName)[0];
         pageNavs.push(p.nav);
         contentNavs.push($("nav", p.content));
-        console.log(p, pageNavs, contentNavs);
+        console.log(p);
     }
-
+    console.log("Pages", pages);
+    console.log("Page Nav Links", pageNavs);
+    console.log("Page Content Navs", contentNavs);
 
 
     $(window).on( "scroll", function() {
@@ -37,18 +38,39 @@ $(function() {
         } else {
             $topBtn.fadeOut("slow");
         }
-
-        /*for (let index in pages) {
-            if ($)
-        }*/
     });
+
+    $(pageNavs).on("click", switchToPage);
 
 });
 
+function switchToPage(event) {
+    // Get and store the page ids
+    let $lastActivePageID = $activePageID;
+    $activePageID = $(event.target).attr('href').substr(1);
+
+    // Cancel if page is already active
+    if ($activePageID === $lastActivePageID) return;
+
+    let lastActivePage = pages[$lastActivePageID];
+    let activePage = pages[$activePageID];
+
+    $(lastActivePage.nav).removeClass("active");
+    $(activePage.nav).addClass("active");
+
+    $(lastActivePage.content).fadeOut(100);
+    $(activePage.content).fadeIn(100, () => setTimeout(function() {
+        scrollToTop("#" + $activePageID);
+    }, 100));
+}
+
 function scrollToTop(id = "#top") {
-    let position = $(id).position().top - $("nav").height();
+    console.log("scrolling to", id, $(id), $(id).offset());
+    let position = $(id).offset().top;
+    console.log(position);
+
 
     $('html, body').animate({
         scrollTop: position
-    }, 500);
+    }, );
 }

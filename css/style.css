@@ -1,28 +1,46 @@
-* {
-    margin: 0;
-    padding: 0;
-    font-family: "Arial", Arial, sans-serif;
-}
-
-
-#topBtn {
-    visibility: hidden;
-}
-
 header {
     width: 100%;
     height: calc(100vh - 66px);
-    padding: 20px;
+    padding: 50px 20px 20px 20px;
 }
 header#top {
     background: url("../img/default-bg.jpg") no-repeat fixed center;
     background-size: cover;
 }
 
+header .container, article .container, form .container {
+    background-color: white;
+    padding: 20px;
+}
+header img {
+    padding: 10px;
+}
+
+main .sticky-top {
+    top: 66px;
+}
+
+article {
+    padding: 2.5% 0;
+}
+
+footer {
+    height: 100px;
+}
+
+#topBtn {
+    visibility: hidden;
+}
+
 #default {
-    background: url("../img/default-bg.jpg") no-repeat fixed center;
+    background: url("../img/landing-bg.jpg") no-repeat fixed center;
     background-size: cover;
 }
+section > div > *{
+    padding-top: 132px;
+    height: 100vh;
+}
+
 #programming {
     background: url("../img/programming-bg.jpg") no-repeat fixed center;
     background-size: cover;
@@ -34,30 +52,6 @@ header#top {
 #game-design {
     background: url("../img/game-design-bg.jpg") no-repeat fixed center;
     background-size: cover;
-}
-
-section .container {
-    padding: 0;
-}
-
-header .container, article .container, form .container {
-    background-color: white;
-    padding: 20px;
-}
-header img {
-    padding: 10px;
-}
-
-section {
-    padding: 2.5% 0;
-}
-
-article {
-    padding: 2.5% 0;
-}
-
-footer {
-    height: 100px;
 }
 
 #programming, #game-development, #game-design {
