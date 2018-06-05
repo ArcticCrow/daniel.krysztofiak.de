@@ -4,12 +4,13 @@
     <meta charset="UTF-8" content="application/javascript">
     <title>Daniel Krysztofiak</title>
     <link rel="icon" href="" type="image/gif" sizes="16x16">
+    <link rel="stylesheet" href="./css/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="./css/style.css" type="text/css">
 </head>
 <body>
 <header>
     <div class="container">
-        <h1><img src="./img/logo.png"/>Daniel Krysztofiak</h1>
+        <h1><img src="./img/Daniel-Krysztofiak-Monogramm-Small.png" height="100" width="100"/>Daniel Krysztofiak</h1>
         <h2>About me</h2>
         <p>Hey there, thanks for stopping by. My name is Daniel
             and I do programming, game design and game development.
@@ -18,14 +19,30 @@
             Design with a Game Design and Development major.</p>
     </div>
 </header>
-<nav>
-    <h2>Navigation</h2>
-    <ul>
-        <li><a href="#programmer">Programmer</a></li>
-        <li><a href="#gamedeveloper">Game Developer</a></li>
-        <li><a href="#gamedesigner">Game Designer</a></li>
-    </ul>
+
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+    <h2 class="sr-only">Navigation</h2>
+    <div class="container">
+
+        <a class="navbar-brand" href="#">
+            <img src="./img/Daniel-Krysztofiak-Monogramm-Small.png" height="40" width="40"/></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a class="nav-link" href="#programmer">Programmer</a></li>
+                <li class="nav-item"><a class="nav-link" href="#gamedeveloper">Game Developer</a></li>
+                <li class="nav-item"><a class="nav-link" href="#gamedesigner">Game Designer</a></li>
+            </ul>
+            <form class="form-inline">
+                <button class="btn btn-sm btn-outline-secondary" type="button">Top</button>
+            </form>
+        </div>
+    </div>
 </nav>
+
 <main>
     <section id="programmer">
         <h2>Programmer</h2>
@@ -107,6 +124,11 @@
 <footer>
     Copyright 2018 - Daniel Krysztofiak
 </footer>
+
+<script src="js/lib/jquery-3.3.1.min.js"></script>
+<script src="js/lib/popper.min.js"></script>
+<script src="js/lib/bootstrap.min.js"></script>
+<script src="js/lib/handlebars-v4.0.11.js"></script>
 
 </body>
 </html>
