@@ -4,19 +4,14 @@
     <meta charset="UTF-8" content="application/javascript">
     <title>Daniel Krysztofiak</title>
     <link rel="icon" href="" type="image/gif" sizes="16x16">
+    <link rel="stylesheet" href="./css/reset.css" type="text/css">
     <link rel="stylesheet" href="./css/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="./css/style.css" type="text/css">
 </head>
 <body>
-<header>
-    <div class="container">
+<header id="top">
+    <div class="jumbotron">
         <h1><img src="./img/Daniel-Krysztofiak-Monogramm-Small.png" height="100" width="100"/>Daniel Krysztofiak</h1>
-        <h2>About me</h2>
-        <p>Hey there, thanks for stopping by. My name is Daniel
-            and I do programming, game design and game development.
-            I'm 20 years old and currently staying in the
-            Netherlands to study Communication and Multimedia
-            Design with a Game Design and Development major.</p>
     </div>
 </header>
 
@@ -32,29 +27,86 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item"><a class="nav-link" href="#programmer">Programmer</a></li>
-                <li class="nav-item"><a class="nav-link" href="#gamedeveloper">Game Developer</a></li>
-                <li class="nav-item"><a class="nav-link" href="#gamedesigner">Game Designer</a></li>
+                <li class="nav-item"><a class="nav-link" href="#default">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#programming">Programmer</a></li>
+                <li class="nav-item"><a class="nav-link" href="#game-development">Game Developer</a></li>
+                <li class="nav-item"><a class="nav-link" href="#game-design">Game Designer</a></li>
             </ul>
             <form class="form-inline">
-                <button class="btn btn-sm btn-outline-secondary" type="button">Top</button>
+                <button class="btn btn-sm btn-outline-secondary" type="button" id="topBtn">Top</button>
             </form>
         </div>
     </div>
 </nav>
 
 <main>
-    <section id="programmer">
-        <h2>Programmer</h2>
-        <h3>Introduction</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sit amet elementum nulla, id fermentum lorem. Pellentesque orci nisi, finibus vel lacus quis, bibendum pellentesque turpis. Ut finibus dictum tincidunt. Etiam ac erat sit amet lorem finibus rutrum. Aenean ultricies sit amet nulla eget blandit. Curabitur non libero quis dui imperdiet vulputate quis id erat. Mauris at elit mi.</p>
+    <section id="default">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <h3 class="sr-only">Navigation - Default</h3>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContentDefault" aria-controls="navbarSupportedContentDefault" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
 
-        <form>
-            <h3>Contact form</h3>
-            <p><img src="./img/">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sit amet elementum
-                nulla, id fermentum lorem. Pellentesque orci nisi, finibus vel lacus quis, bibendum pellentesque turpis. Ut finibus dictum tincidunt. Etiam ac erat sit amet lorem finibus rutrum. Aenean ultricies sit amet nulla eget blandit. Curabitur non libero quis dui imperdiet vulputate quis id erat. Mauris at elit mi.</p>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContentDefault">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item"><a class="nav-link" href="#default-intro">About</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#default-portfolio">Portfolio</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#default-contact">Contact</a></li>
+                        </ul>
+                    </div>
+            </nav>
+        </div>
+
+        <header class="intro" id="default-intro">
+            <div class="container">
+                <h2>About me</h2>
+                <p>Hey there, thanks for stopping by. My name is Daniel
+                    and I do programming, game design and game development.
+                    I'm 20 years old and currently staying in the
+                    Netherlands to study Communication and Multimedia
+                    Design with a Game Design and Development major.</p>
+            </div>
+        </header>
+
+        <article id="default-portfolio">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm"><a class="nav-link" href="#programming">Programmer</a></div>
+                    <div class="col-sm"><a class="nav-link" href="#game-development">Game Developer</a></div>
+                    <div class="col-sm"><a class="nav-link" href="#game-design">Game Designer</a></div>
+                </div>
+            </div>
+        </article>
+
+        <form id="default-contact">
+            <div class="container">
+                <h3>Contact form - General</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sit amet elementum
+                    nulla, id fermentum lorem. Pellentesque orci nisi, finibus vel lacus quis, bibendum pellentesque turpis. Ut finibus dictum tincidunt. Etiam ac erat sit amet lorem finibus rutrum. Aenean ultricies sit amet nulla eget blandit. Curabitur non libero quis dui imperdiet vulputate quis id erat. Mauris at elit mi.</p>
+                <button type="submit">Send</button>
+            </div>
         </form>
+    </section>
 
+    <section id="programming">
+        <header class="intro">
+            <div class="container">
+                <h2>Programming</h2>
+                <p>Hey there, thanks for stopping by. My name is Daniel
+                    and I do programming, game design and game development.
+                    I'm 20 years old and currently staying in the
+                    Netherlands to study Communication and Multimedia
+                    Design with a Game Design and Development major.</p>
+            </div>
+        </header>
+        <div class="container">
+            <form>
+                <h3>Contact form - Programming</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sit amet elementum
+                    nulla, id fermentum lorem. Pellentesque orci nisi, finibus vel lacus quis, bibendum pellentesque turpis. Ut finibus dictum tincidunt. Etiam ac erat sit amet lorem finibus rutrum. Aenean ultricies sit amet nulla eget blandit. Curabitur non libero quis dui imperdiet vulputate quis id erat. Mauris at elit mi.</p>
+            </form>
+        </div>
         <article>
             <h3>Example project</h3>
             <time>01-01-18</time>
@@ -71,14 +123,21 @@
 
     </section>
 
-    <section id="gamedeveloper">
-        <h2>Game Developer</h2>
-        <h3>Introduction</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sit amet elementum nulla, id fermentum lorem. Pellentesque orci nisi, finibus vel lacus quis, bibendum pellentesque turpis. Ut finibus dictum tincidunt. Etiam ac erat sit amet lorem finibus rutrum. Aenean ultricies sit amet nulla eget blandit. Curabitur non libero quis dui imperdiet vulputate quis id erat. Mauris at elit mi.</p>
+    <section id="game-development">
+        <header class="intro">
+            <div class="container">
+                <h2>Game Development</h2>
+                <p>Hey there, thanks for stopping by. My name is Daniel
+                    and I do programming, game design and game development.
+                    I'm 20 years old and currently staying in the
+                    Netherlands to study Communication and Multimedia
+                    Design with a Game Design and Development major.</p>
+            </div>
+        </header>
 
         <form>
-            <h3>Contact form</h3>
-            <p><img src="./img/">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sit amet elementum
+            <h3>Contact form - Game Development</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sit amet elementum
                 nulla, id fermentum lorem. Pellentesque orci nisi, finibus vel lacus quis, bibendum pellentesque turpis. Ut finibus dictum tincidunt. Etiam ac erat sit amet lorem finibus rutrum. Aenean ultricies sit amet nulla eget blandit. Curabitur non libero quis dui imperdiet vulputate quis id erat. Mauris at elit mi.</p>
         </form>
 
@@ -96,14 +155,21 @@
         </article>
     </section>
 
-    <section id="gamedesigner">
-        <h2>Game Designer</h2>
-        <h3>Introduction</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sit amet elementum nulla, id fermentum lorem. Pellentesque orci nisi, finibus vel lacus quis, bibendum pellentesque turpis. Ut finibus dictum tincidunt. Etiam ac erat sit amet lorem finibus rutrum. Aenean ultricies sit amet nulla eget blandit. Curabitur non libero quis dui imperdiet vulputate quis id erat. Mauris at elit mi.</p>
+    <section id="game-design">
+        <header class="intro">
+            <div class="container">
+                <h2>Game Design</h2>
+                <p>Hey there, thanks for stopping by. My name is Daniel
+                    and I do programming, game design and game development.
+                    I'm 20 years old and currently staying in the
+                    Netherlands to study Communication and Multimedia
+                    Design with a Game Design and Development major.</p>
+            </div>
+        </header>
 
         <form>
-            <h3>Contact form</h3>
-            <p><img src="./img/">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sit amet elementum
+            <h3>Contact form - Game Design</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sit amet elementum
                 nulla, id fermentum lorem. Pellentesque orci nisi, finibus vel lacus quis, bibendum pellentesque turpis. Ut finibus dictum tincidunt. Etiam ac erat sit amet lorem finibus rutrum. Aenean ultricies sit amet nulla eget blandit. Curabitur non libero quis dui imperdiet vulputate quis id erat. Mauris at elit mi.</p>
         </form>
 
@@ -122,13 +188,18 @@
     </section>
 </main>
 <footer>
-    Copyright 2018 - Daniel Krysztofiak
+    <div class="container">
+        Copyright 2018 - Daniel Krysztofiak
+        <a href="#">Disclaimer</a>
+    </div>
 </footer>
 
 <script src="js/lib/jquery-3.3.1.min.js"></script>
 <script src="js/lib/popper.min.js"></script>
 <script src="js/lib/bootstrap.min.js"></script>
-<script src="js/lib/handlebars-v4.0.11.js"></script>
+<!--<script src="js/lib/handlebars-v4.0.11.js"></script>-->
+<script src="js/interaction.js"></script>
+
 
 </body>
 </html>

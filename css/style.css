@@ -4,14 +4,43 @@
     font-family: "Arial", Arial, sans-serif;
 }
 
+
+#topBtn {
+    visibility: hidden;
+}
+
 header {
-    background: url("../img/gamedesigner-bg.jpg") no-repeat fixed center;
-    background-size: cover;
     width: 100%;
-    height: 95vh;
+    height: calc(100vh - 66px);
     padding: 20px;
 }
-header .container {
+header#top {
+    background: url("../img/default-bg.jpg") no-repeat fixed center;
+    background-size: cover;
+}
+
+#default {
+    background: url("../img/default-bg.jpg") no-repeat fixed center;
+    background-size: cover;
+}
+#programming {
+    background: url("../img/programming-bg.jpg") no-repeat fixed center;
+    background-size: cover;
+}
+#game-development {
+    background: url("../img/game-development-bg.jpg") no-repeat fixed center;
+    background-size: cover;
+}
+#game-design {
+    background: url("../img/game-design-bg.jpg") no-repeat fixed center;
+    background-size: cover;
+}
+
+section .container {
+    padding: 0;
+}
+
+header .container, article .container, form .container {
     background-color: white;
     padding: 20px;
 }
@@ -19,6 +48,18 @@ header img {
     padding: 10px;
 }
 
-nav {
-    height: 5vh;
+section {
+    padding: 2.5% 0;
+}
+
+article {
+    padding: 2.5% 0;
+}
+
+footer {
+    height: 100px;
+}
+
+#programming, #game-development, #game-design {
+    display: none;
 }
