@@ -60,8 +60,8 @@ function switchToPage(event) {
 
     $(lastActivePage.content).fadeOut(100);
     $(activePage.content).fadeIn(100, () => setTimeout(function() {
-        scrollToTop("#" + $activePageID);
-    }, 100));
+        scrollToTop("#" + $activePageID + "-intro");
+    }, 300));
 }
 
 function scrollToTop(id = "#top") {

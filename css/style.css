@@ -1,3 +1,8 @@
+
+body {
+    overflow-x: hidden;
+}
+
 header {
     width: 100%;
     height: calc(100vh - 66px);
@@ -36,6 +41,12 @@ footer {
     background: url("../img/landing-bg.jpg") no-repeat fixed center;
     background-size: cover;
 }
+
+section {
+    transition-duration: 500ms;
+    background-size: cover;
+}
+
 section > div > *{
     padding-top: 132px;
     height: 100vh;
@@ -43,15 +54,12 @@ section > div > *{
 
 #programming {
     background: url("../img/programming-bg.jpg") no-repeat fixed center;
-    background-size: cover;
 }
 #game-development {
     background: url("../img/game-development-bg.jpg") no-repeat fixed center;
-    background-size: cover;
 }
 #game-design {
     background: url("../img/game-design-bg.jpg") no-repeat fixed center;
-    background-size: cover;
 }
 
 #programming, #game-development, #game-design {
