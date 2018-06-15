@@ -9,16 +9,13 @@ header {
     background-size: cover;
 }
 
+header, main, footer {
+    min-height: 100vh;
+}
+
 header .container, article .container, form .container {
     background-color: white;
     padding: 20px;
-}
-header img {
-    padding: 10px;
-}
-
-main .sticky-top {
-    top: 66px;
 }
 
 article {
@@ -44,12 +41,12 @@ section > div > *{
 }
 
 #landing-header { background: url("../assets/img/landing-bg.jpg") no-repeat fixed center; }
-#programming-header { background: url("../assets/img/programming-bg.jpg") no-repeat fixed center; }
-#game-development-header { background: url("../assets/img/game-development-bg.jpg") no-repeat fixed center; }
-#game-design-header { background: url("../assets/img/game-design-bg.jpg") no-repeat fixed center; }
+#programmer-header { background: url("../assets/img/programming-bg.jpg") no-repeat fixed center; }
+#game-developer-header { background: url("../assets/img/game-development-bg.jpg") no-repeat fixed center; }
+#game-designer-header { background: url("../assets/img/game-design-bg.jpg") no-repeat fixed center; }
 
 a.page-nav-link, a.page-nav-link:visited{
-    position: absolute;
+    position: fixed;
     text-align: center;
     text-decoration: none;
     color: white;
@@ -67,7 +64,7 @@ a#down-button div, a#up-button div {
 a#right-button div, a#left-button div {
     position: relative;
     bottom: -50%;
-    width: 5vh;
+    width: 10vh;
     height: 100vh;
 }
 a#down-button span, a#up-button span, a#right-button span, a#left-button span {
@@ -90,4 +87,18 @@ a>div:hover {
     -ms-transition: 1s ease-out;
     -o-transition: 1s ease-out;
     transition: 1s ease-out;
+}
+
+div#cover {
+    position: fixed;
+    width: calc(100vw);
+    height: 100vh;
+    top: 0;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#45484d+0,000000+100;Black+3D+%231 */
+    background: rgb(69,72,77); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(69,72,77,1) 0%, rgba(0,0,0,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+
 }

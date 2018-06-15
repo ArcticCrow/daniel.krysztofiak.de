@@ -2,200 +2,231 @@ let left, right, up, down;
 let arrows;
 let currentContentPosition, currentPagePosition;
 let pageCount, contentCount;
+let pageDir;
 
-async function displayContent(resolve, reject, contentID = undefined) {
-    if (contentID === undefined) {
-        contentID = getHash();
-    }
+async function initContent(resolve, reject, contentID = undefined) {
+    return new Promise((resolve, reject) => {
+        console.log("Initializing contents...");
 
-    // Test for listed substring of index in content map layout
-    let regx = new RegExp ("(" + contentMap.layout.join("|") + ")","i");
-    let contentMatch = contentID.match(regx);
+        // Add default elements
+        $(navContainer).html(contents["nav"]);
+        $(footerContainer).html(contents["footer"]);
 
-    console.log(regx, contentMatch);
+        if (arrows === undefined) {
+            $(contents["arrows"]).appendTo($("body"));
 
-    if (contentMatch === null) {
-        // TODO display 404 page or similar content?
-        console.warn("No page found for '" + currentContentID + "', showing default page instead.");
-        changePage(contentMap.default);
-        changeContentID(contentMap.default + "-header");
-    } else {
-        changePage(contentMatch[0]);
-        changeContentID(contentID.substr(1));
-        if (currentContentID === "" || contents[currentContentID] === undefined) {
-            changeContentID(currentPage + "-header");
+            arrows = {
+                up: $("body a#up-button").on("click", () => { updateContent(pageContentMap[up]); updateNavigation(); }),
+                down: $("body a#down-button").on("click", () => { updateContent(pageContentMap[down]); updateNavigation(); }),
+                left: $("body a#left-button").on("click", () => { pageDir = -1; updatePage(contentMap.layout[left]); updateNavigation(); }),
+                right: $("body a#right-button").on("click", () => { pageDir = 1; updatePage(contentMap.layout[right]); updateNavigation(); })
+            };
         }
-    }
 
-    console.log("Page: " + currentPage, "ID: " + currentContentID);
-    $(headerContainer).html(contents[currentPage + "-header"]).attr("id", currentPage + "-header");
-    $(navContainer).html(contents["nav"]);
-    $(mainContainer).html(contents[currentPage + "-main"][0]).attr("id", currentPage + "-main-0");
-    $(footerContainer).html(contents["footer"]);
+        $(window).on ("mousewheel", function (event) {
+            // Called when the window is scrolled
+            // Make sure the values are integers
+            let x = parseInt(event.deltaX);
+            let y = parseInt(event.deltaY);
+            console.log("mouse scrolling", x, y);
 
-    if (arrows === undefined) {
-        $(contents["arrows"]).appendTo($("body"));
+            // - deltaX -> left; + deltaX -> right; + deltaY -> up; - deltaY -> down
+            if (currentContentPosition === 0) {
+                if (x < 0) { // enable left
+                    pageDir = -1; updatePage(contentMap.layout[left]); updateNavigation();
+                }
+                if (x > 0) { // enable right
+                    pageDir = 1; updatePage(contentMap.layout[right]); updateNavigation();
+                }
+            } else if (y > 0) { // enable up
+                // enable up
+                updateContent(pageContentMap[up]); updateNavigation();
+            }
+            if (currentContentPosition < contentCount - 1 && y < 0) {
+                // enable down
+                updateContent(pageContentMap[down]); updateNavigation();
+            }
+        });
 
-        arrows = {
-            up: $("body a#up-button"),
-            down: $("body a#down-button"),
-            left: $("body a#left-button"),
-            right: $("body a#right-button")
-        };
+        console.log(getHash());
+        // 1. figure out page and swap to page, and place content
+        updatePage();
 
-    }
+        // 2. update navigation
+        updateNavigation();
 
-    updateNavigation()
-        .catch((reason) => {
-            console.error("An error occurred while updating navigation:", reason);
+        resolve();
     });
 }
 
-
-async function updateNavigation(resolve, reject) {
-
-    console.log("Updating navigation");
-
-    updatePositions();
-
-    if (currentContentPosition > 0) {
-        // Show top arrow
-        $(arrows.up).css("display", "initial")
-            .on("click", () => {
-                scrollVertical(pageContentMap[up])
-            })
-            .attr("href", "#" + pageContentMap[up]);
-        // Show content pill nav
-        // Hide left and right arrows
-        $(arrows.left).css("display", "none")
-            .off("click", "**");
-        $(arrows.right).css("display", "none")
-            .off("click", "**");
-    } else {
-        // Hide top arrow and pill nav
-        $(arrows.up).css("display", "none")
-            .off("click", "**");
-
-        // Show left and right arrows
-        $(arrows.left).css("display", "initial")
-            .on("click", () => {
-                scrollHorizontal(contentMap.layout[left]);
-            })
-            .attr("href", "#" + contentMap.layout[left]);
-        $(arrows.right).css("display", "initial")
-            .on("click", () => {
-                scrollHorizontal(contentMap.layout[right])
-            })
-            .attr("href", "#" + contentMap.layout[right]);
-    }
-    if (currentContentPosition === contentCount - 1){
-        // Hide bottom arrow
-        $(arrows.down).css("display", "none")
-            .off("click", "**");
-    } else {
-        // Show bottom arrow
-        $(arrows.down).css("display", "initial")
-            .on("click", () => {
-                scrollVertical(pageContentMap[down])
-            })
-            .attr("href", "#" + pageContentMap[down]);
-
-    }
-    console.log(arrows);
-
-    $(window).mousewheel(function (event) {
-        // called when the window is scrolled
-        // Make sure the values are integers
-        let x = parseInt(event.deltaX);
-        let y = parseInt(event.deltaY);
-        console.log("scrolling", x, y);
-
-        /*
-            - deltaX -> left
-            + deltaX -> right
-            + deltaY -> up
-            - deltaY -> down
-         */
-        if (currentContentPosition === 0) {
-            // enable left right
-            if (x < 0) {
-                scrollHorizontal(contentMap.layout[left]);
-            }
-            if (x > 0) {
-                scrollHorizontal(contentMap.layout[right]);
-            }
-
-        } else if (y > 0) {
-            // enable up
-            scrollVertical(pageContentMap[up]);
+function updateNavigation() {
+    console.log("Updating navigation...");
+    for (let dir in arrows) {
+        if (arrows.hasOwnProperty(dir)) {
+            updateArrow(dir);
         }
-        if (currentContentPosition < contentCount - 1 && y < 0){
-            // enable down
-            scrollVertical(pageContentMap[down]);
-        }
-    });
-
-    return resolve;
+    }
 }
 
-function scrollHorizontal(targetPage) {
+function updateArrow(dir) {
+    let display = "none";
+    switch (dir) {
+        case "up":
+            if (currentContentPosition > 0) {
+                display = "initial";
+            }
+            break;
+        case "down":
+            if (currentContentPosition < contentCount - 1) {
+                display = "initial"
+            }
+            break;
+        case "left":
+        case "right":
+            if (currentContentPosition === 0) {
+                display = "initial";
+            }
+            break;
+
+        default: console.error("Unknown direction: " + dir); return;
+    }
+
+    $(arrows[dir]).css("display", display);
+}
+
+function changePages(targetPage = 0) {
     // Play page transition
-    console.log(targetPage);
+    let dir = (pageDir > 0) ? "right" : "left";
+    console.log(targetPage, dir);
+
+    let cover = $("<div id='cover'></div>").appendTo('body').css(dir, "-100vw");
+
+    let slideIn = {};
+    slideIn[dir] = "0";
+
+    let slideOut = {};
+    slideOut[dir] = "100vw";
+
+    $(cover).animate(slideIn, 500,function() {
+        new Promise((resolve, reject) => {
+            // Update contents
+            console.log("Page: " + currentPage, "ID: " + currentContentID);
+            $(headerContainer).html(contents[currentPage + "-header"]).attr("id", currentPage + "-header");
+            $(mainContainer).html("");
+            for (let i = 0; i < contents[currentPage + "-main"].length; i++) {
+                $(mainContainer).append($(contents[currentPage + "-main"][i]).attr("id", currentPage + "-main-0"));
+            }
+            resolve();
+        }).then(
+            $(cover).animate(slideOut, 500, function() {
+                cover.remove();
+                updateContent();
+        }));
+    });
+
+
 }
-function scrollVertical(position = 0) {
+function scrollToContent(position = 0) {
     // Smooth scroll to element or position
-    console.log(position);
-    let targetY = position;
-    if (isNaN(position)) {
-        let id = "#" + position;
-        if ($(id).length > 0) {
-            targetY = $(id).offset().top;
-        } else {
-            console.warn(id, "not found");
-        }
+    let contentID = $("#" + pageContentMap[position]);
+
+    if (contentID.length > 0) {
+        console.log("Scrolling to " + contentID.attr("id"));
+        let targetY = contentID.offset().top;
+        $('html, body').animate({scrollTop: targetY},
+            function() {document.location.hash = contentID.attr("id");});
+    } else {
+        console.warn(contentID, "not found");
+    }
+}
+
+function updatePage(pageName) {
+    // Test for listed substring of index in content map layout
+    if (pageName === undefined) {
+        pageName = getHash();
+    }
+    let regex = new RegExp ("(" + contentMap.layout.join("|") + ")","i");
+    let pageMatch = pageName.match(regex);
+
+    // Test for listed page name successful?
+    if (pageMatch !== null) {
+        pageName = pageMatch[0];
+    } else {
+        console.warn("No page found for '" + getHash() + "', showing default page instead.");
+        pageName = contentMap.default;
     }
 
-    $('html, body').animate({
-        scrollTop: targetY
-    });
-}
+    // No need to change page if already active
+    if (pageName === currentPage) {
+        console.log("Page " + pageName + " is already active" + currentPage + "!");
+        return;
+    }
 
-function changeContentID(contentID) {
-    console.log("Content focus change", currentContentID + "=>" + contentID);
-
-    //TODO run tests and checks
-    currentContentID = contentID;
-}
-
-function changePage (pageName) {
     console.log("Page focus change", currentPage + "=>" + pageName);
-
-    //TODO run tests and checks
     currentPage = pageName;
-}
 
-function updatePositions() {
+    // Update page positions
     currentPagePosition = $.inArray(currentPage, contentMap.layout);
     pageCount = contentMap.layout.length;
-    // avoid negative or too big values
+
+    // Avoid negative or too big values
     left = (currentPagePosition + pageCount - 1) % pageCount;
     right = (currentPagePosition + pageCount + 1) % pageCount;
 
-    // Create a map for all current contents
+    console.log("Page position: " + currentPagePosition + " (" + currentPage + ")\n",
+        "Previous: " + left + " (" + contentMap.layout[left] +")\n",
+        "Next: " + right + " (" + contentMap.layout[right] +")");
+
     pageContentMap = [currentPage + "-header"];
     for (let i = 0; i < contentMap[currentPage].main.length; i++) {
         pageContentMap.push(currentPage + "-main-" + i);
     }
+    pageContentMap.push("bottom");
 
-    // avoid negative or too big values
+    console.log(pageContentMap);
+
+    changePages(currentPagePosition);
+}
+
+function updateContent(contentID) {
+    // Test for listed substring of index in page content map
+    if (contentID === undefined) {
+        contentID = getHash();
+    }
+    let regex = new RegExp ("(" + pageContentMap.join("|") + ")","i");
+    let contentMatch = contentID.match(regex);
+    console.log(contentID, regex, contentMatch);
+
+    // Test for listed content id successful?
+    if (contentMatch !== null) {
+        contentID = contentMatch[0];
+    } else {
+        console.warn("No content found for '" + getHash() + "', showing page header instead.");
+        contentID = currentPage + "-header";
+    }
+
+    // No need to change content if already active
+    if (currentContentID === contentID) {
+        console.log("Page " + contentID + " is already active" + currentContentID + "!");
+        return;
+    }
+
+    console.log("Page focus change", currentContentID + "=>" + contentID);
+    currentContentID = contentID;
+
+    // Update content positions
     currentContentPosition = $.inArray(currentContentID, pageContentMap);
     contentCount = pageContentMap.length;
+
+    // Avoid negative or too big values
     up = (currentContentPosition + contentCount - 1) % contentCount;
     down = (currentContentPosition + contentCount + 1) % contentCount;
 
-    console.log(left, currentPagePosition, right);
-    console.log(up, currentContentPosition, down);
-    console.log(pageContentMap);
+    console.log("Content position: " + currentContentPosition + " (" + currentContentID + ")\n",
+        "Previous: " + up + " (" + pageContentMap[up] +")\n",
+        "Next: " + down + " (" + pageContentMap[down] +")");
+
+    scrollToContent(currentContentPosition);
 }
 
 function getHash() {

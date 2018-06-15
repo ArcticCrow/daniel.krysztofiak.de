@@ -16,9 +16,8 @@ $.getJSON("./components/content.map.json", (json) => {
     //console.log(headerContainer, navContainer, mainContainer, footerContainer);
 
     $.getScript("js/loader.js", () => {
-        let loader = new Promise(load)
-            .then((result) => {
-                new Promise(displayContent);
+        load().then(() => {
+                new Promise(initContent);
             })
             .catch((reason) => {
                 console.error("Something went wrong:" + reason);
