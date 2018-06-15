@@ -12,6 +12,21 @@ let $topBtn;
 
 $(function() {
     // Document ready
+
+    $(document).mousewheel(function (event) {
+        // called when the window is scrolled.
+        //console.log("scrolling", event.deltaX, event.deltaY);
+        /*
+            + deltaX -> left
+            - deltaX -> right
+            + deltaY -> up
+            - deltaY -> down
+         */
+
+
+
+    });
+
     $topBtn = $("#topBtn");
     $activePageID = $('#pageNav .active').attr("href").substr(1);
     console.log($activePageID);
@@ -71,6 +86,6 @@ function scrollToTop(id = "#top") {
 
 
     $('html, body').animate({
-        scrollTop: position
+        scrollTo: position
     }, );
 }

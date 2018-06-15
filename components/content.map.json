@@ -1,0 +1,35 @@
+{
+    "folder":"components/",
+    "default": "landing",
+    "layout": ["landing", "programmer", "game-developer", "game-designer"],
+    "landing": {
+        "folder":"landing-page/",
+        "header": "header.html",
+        "nav": "nav.html",
+        "main": ["intro.html"]
+    },
+    "programmer": {
+        "folder":"programmer-page/",
+        "header": "header.html",
+        "nav": "nav.html",
+        "main": ["portfolio.html"]
+    },
+    "game-developer": {
+        "folder":"game-developer-page/",
+        "header": "header.html",
+        "nav": "nav.html",
+        "main": ["portfolio.html"]
+    },
+    "game-designer": {
+        "folder":"game-designer-page/",
+        "header": "header.html",
+        "nav": "nav.html",
+        "main": ["portfolio.html"]
+    },
+    "modals": {
+        "contact": "contact.modal.html"
+    },
+    "nav": "nav.html",
+    "footer": "footer.html",
+    "arrows": "arrows.html"
+}

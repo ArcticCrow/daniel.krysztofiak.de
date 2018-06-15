@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" content="application/javascript">
+    <title>Daniel Krysztofiak</title>
+    <link rel="icon" href="assets/monogram/Daniel-Krysztofiak-Monogram-Full-Small.png" type="image/gif" sizes="100x100">
+    <link rel="stylesheet" href="./css/reset.css" type="text/css">
+    <link rel="stylesheet" href="./css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="./css/style.css" type="text/css">
+</head>
+<body>
+<header id="top">
+        <div class="container align-middle">
+            <div class="mx-auto">
+                <img src="assets/monogram/Daniel-Krysztofiak-Monogram-Small.png" height="100" width="100"/>
+                <hr class="my-4">
+                <h1 class="display-4 text-center">
+                    Daniel Krysztofiak
+                </h1>
+            </div>
+            <div class="container">
+                <p class="lead">Hey there, thanks for stopping by. My name is Daniel
+                    and I do programming, game design and game development.
+                    I'm 20 years old and currently staying in the
+                    Netherlands to study Communication and Multimedia
+                    Design with a Game Design and Development major.</p>
+            </div>
+            <hr class="my-4">
+            <p class="lead"></p>
+
+            <div class="row">
+                <div class="col-lg-4"><a class="btn btn-outline-primary btn-lg btn-block">Programmer</a></div>
+                <div class="col-lg-4"><a class="btn btn-outline-success btn-lg btn-block">Game Developer</a></div>
+                <div class="col-lg-4"><a class="btn btn-outline-dark btn-lg btn-block">Game Designer</a></div>
+            </div>
+
+        </div>
+    
+</header>
+
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+    <h2 class="sr-only">Navigation</h2>
+    <div class="container">
+
+        <a class="navbar-brand" href="#">
+            <img src="assets/monogram/Daniel-Krysztofiak-Monogram-Small.png" height="40" width="40"/></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#pageNav" aria-controls="pageNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="pageNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a class="nav-link active" href="#default">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#programming">Programmer</a></li>
+                <li class="nav-item"><a class="nav-link" href="#game-development">Game Developer</a></li>
+                <li class="nav-item"><a class="nav-link" href="#game-design">Game Designer</a></li>
+            </ul>
+            <form class="form-inline">
+                <button class="btn btn-sm btn-outline-secondary" type="button" id="topBtn" onclick="scrollToTop()">Top</button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<main>
+    <!--
+
+    Default Section
+
+    -->
+    <section id="default">
+
+        <nav id="default-nav" class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <h3 class="sr-only">Navigation - Default</h3>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#defaultContentNav" aria-controls="defaultContentNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="defaultContentNav">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item"><a class="nav-link active" href="#default-intro">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#default-portfolio">Portfolio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#default-contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div data-spy="scroll" data-target="#default-nav" data-offset="0">
+            <header class="intro" id="default-intro">
+                <div class="container">
+                    <h2>About me</h2>
+                    <p>Hey there, thanks for stopping by. My name is Daniel
+                        and I do programming, game design and game development.
+                        I'm 20 years old and currently staying in the
+                        Netherlands to study Communication and Multimedia
+                        Design with a Game Design and Development major.</p>
+                </div>
+            </header>
+
+            <article id="default-portfolio">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm"><a class="nav-link" href="#programming">Programmer</a></div>
+                        <div class="col-sm"><a class="nav-link" href="#game-development">Game Developer</a></div>
+                        <div class="col-sm"><a class="nav-link" href="#game-design">Game Designer</a></div>
+                    </div>
+                </div>
+            </article>
+
+
+        </div>
+    </section>
+
+    <!--
+
+    Programming Section
+
+    -->
+    <section id="programming">
+        <nav id="programming-nav" class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <h3 class="sr-only">Navigation - Default</h3>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#programmingContentNav" aria-controls="programmingContentNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="programmingContentNav">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item"><a class="nav-link active" href="#programming-intro">Programmer</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#programming-portfolio">Projects</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#programming-contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div data-spy="scroll" data-target="#programming-nav" data-offset="0">
+            <header id="programming-intro" class="intro">
+                <div class="container">
+                    <h2>Programming</h2>
+                    <p>Hey there, thanks for stopping by. My name is Daniel
+                        and I do programming, game design and game development.
+                        I'm 20 years old and currently staying in the
+                        Netherlands to study Communication and Multimedia
+                        Design with a Game Design and Development major.</p>
+                </div>
+            </header>
+            <div id="programming-portfolio">
+                <article id="programming-project-1">
+                    <div class="container">
+                        <h3>Example project 1</h3>
+                        <time>01-01-18</time>
+                        <p><img src="./img/">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sit amet elementum
+                            nulla, id fermentum lorem. Pellentesque orci nisi, finibus vel lacus quis, bibendum pellentesque turpis. Ut finibus dictum tincidunt. Etiam ac erat sit amet lorem finibus rutrum. Aenean ultricies sit amet nulla eget blandit. Curabitur non libero quis dui imperdiet vulputate quis id erat. Mauris at elit mi.</p>
+                        <ul>
+                            <li><a>Project page</a></li>
+                            <li><a>Github link</a></li>
+                            <li><a>Store listing</a></li>
+                            <li><a>Other link</a></li>
+                        </ul>
+                    </div>
+                </article>
+                <article id="programming-project-2">
+                    <div class="container">
+                        <h3>Example project 2</h3>
+                        <time>01-01-18</time>
+                        <p><img src="./img/">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sit amet elementum
+                            nulla, id fermentum lorem. Pellentesque orci nisi, finibus vel lacus quis, bibendum pellentesque turpis. Ut finibus dictum tincidunt. Etiam ac erat sit amet lorem finibus rutrum. Aenean ultricies sit amet nulla eget blandit. Curabitur non libero quis dui imperdiet vulputate quis id erat. Mauris at elit mi.</p>
+                        <ul>
+                            <li><a>Project page</a></li>
+                            <li><a>Github link</a></li>
+                            <li><a>Store listing</a></li>
+                            <li><a>Other link</a></li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+
+            <form id="programming-contact">
+                <div class="container">
+                    <h3>Contact form - Programming</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sit amet elementum
+                        nulla, id fermentum lorem. Pellentesque orci nisi, finibus vel lacus quis, bibendum pellentesque turpis. Ut finibus dictum tincidunt. Etiam ac erat sit amet lorem finibus rutrum. Aenean ultricies sit amet nulla eget blandit. Curabitur non libero quis dui imperdiet vulputate quis id erat. Mauris at elit mi.</p>
+                </div>
+            </form>
+        </div>
+
+    </section>
+
+    <!--
+
+    Game Development Section
+
+    -->
+    <section id="game-development">
+        <nav id="game-development-nav" class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <h3 class="sr-only">Navigation - Default</h3>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#gameDevContentNav"
+                        aria-controls="gameDevContentNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="gameDevContentNav">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item"><a class="nav-link active" href="#game-development-intro">Game
+                            Developer</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#game-development-portfolio">Projects</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#game-development-contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div data-spy="scroll" data-target="#game-development-nav" data-offset="0">
+            <header id="game-development-intro" class="intro">
+                <div class="container">
+                    <h2>Game Development</h2>
+                    <p>Hey there, thanks for stopping by. My name is Daniel
+                        and I do programming, game design and game development.
+                        I'm 20 years old and currently staying in the
+                        Netherlands to study Communication and Multimedia
+                        Design with a Game Design and Development major.</p>
+                </div>
+            </header>
+
+            <div id="game-development-portfolio">
+                <article id="game-development-project-1">
+                    <div class="container">
+                        <h3>Example project 1</h3>
+                        <time>01-01-18</time>
+                        <p><img src="./img/">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sit amet elementum
+                            nulla, id fermentum lorem. Pellentesque orci nisi, finibus vel lacus quis, bibendum pellentesque turpis. Ut finibus dictum tincidunt. Etiam ac erat sit amet lorem finibus rutrum. Aenean ultricies sit amet nulla eget blandit. Curabitur non libero quis dui imperdiet vulputate quis id erat. Mauris at elit mi.</p>
+                        <ul>
+                            <li><a>Project page</a></li>
+                            <li><a>Github link</a></li>
+                            <li><a>Store listing</a></li>
+                            <li><a>Other link</a></li>
+                        </ul>
+                    </div>
+                </article>
+                <article id="game-development-project-2">
+                    <div class="container">
+                        <h3>Example project 2</h3>
+                        <time>01-01-18</time>
+                        <p><img src="./img/">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sit amet elementum
+                            nulla, id fermentum lorem. Pellentesque orci nisi, finibus vel lacus quis, bibendum pellentesque turpis. Ut finibus dictum tincidunt. Etiam ac erat sit amet lorem finibus rutrum. Aenean ultricies sit amet nulla eget blandit. Curabitur non libero quis dui imperdiet vulputate quis id erat. Mauris at elit mi.</p>
+                        <ul>
+                            <li><a>Project page</a></li>
+                            <li><a>Github link</a></li>
+                            <li><a>Store listing</a></li>
+                            <li><a>Other link</a></li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+
+            <form id="game-development-contact">
+                <div class="container">
+                    <h3>Contact form - Game Development</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sit amet elementum
+                        nulla, id fermentum lorem. Pellentesque orci nisi, finibus vel lacus quis, bibendum pellentesque turpis. Ut finibus dictum tincidunt. Etiam ac erat sit amet lorem finibus rutrum. Aenean ultricies sit amet nulla eget blandit. Curabitur non libero quis dui imperdiet vulputate quis id erat. Mauris at elit mi.</p>
+                </div>
+            </form>
+        </div>
+    </section>
+
+
+    <!--
+
+    Game Design Section
+
+    -->
+    <section id="game-design">
+        <nav id="game-design-nav" class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <h3 class="sr-only">Navigation - Default</h3>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#gameDesignContentNav"
+                        aria-controls="gameDesignContentNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="gameDesignContentNav">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item"><a class="nav-link active" href="#game-design-intro">Game
+                            Design</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#game-design-portfolio">Projects</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#game-design-contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div>
+            <header id="game-design-intro" class="intro">
+                <div class="container">
+                    <h2>Game Design</h2>
+                    <p>Hey there, thanks for stopping by. My name is Daniel
+                        and I do programming, game design and game development.
+                        I'm 20 years old and currently staying in the
+                        Netherlands to study Communication and Multimedia
+                        Design with a Game Design and Development major.</p>
+                </div>
+            </header>
+
+            <form id="game-design-contact">
+                <div class="container">
+                    <h3>Contact form - Game Design</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sit amet elementum
+                        nulla, id fermentum lorem. Pellentesque orci nisi, finibus vel lacus quis, bibendum pellentesque turpis. Ut finibus dictum tincidunt. Etiam ac erat sit amet lorem finibus rutrum. Aenean ultricies sit amet nulla eget blandit. Curabitur non libero quis dui imperdiet vulputate quis id erat. Mauris at elit mi.</p>
+                </div>
+            </form>
+
+            <div id="game-design-portfolio">
+                <article id="game-design-project-1">
+                    <div class="container">
+                        <h3>Example project 1</h3>
+                        <time>01-01-18</time>
+                        <p><img src="./img/">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sit amet elementum
+                            nulla, id fermentum lorem. Pellentesque orci nisi, finibus vel lacus quis, bibendum pellentesque turpis. Ut finibus dictum tincidunt. Etiam ac erat sit amet lorem finibus rutrum. Aenean ultricies sit amet nulla eget blandit. Curabitur non libero quis dui imperdiet vulputate quis id erat. Mauris at elit mi.</p>
+                        <ul>
+                            <li><a>Project page</a></li>
+                            <li><a>Github link</a></li>
+                            <li><a>Store listing</a></li>
+                            <li><a>Other link</a></li>
+                        </ul>
+                    </div>
+                </article>
+                <article id="game-design-project-2">
+                    <div class="container">
+                        <h3>Example project 2</h3>
+                        <time>01-01-18</time>
+                        <p><img src="./img/">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sit amet elementum
+                            nulla, id fermentum lorem. Pellentesque orci nisi, finibus vel lacus quis, bibendum pellentesque turpis. Ut finibus dictum tincidunt. Etiam ac erat sit amet lorem finibus rutrum. Aenean ultricies sit amet nulla eget blandit. Curabitur non libero quis dui imperdiet vulputate quis id erat. Mauris at elit mi.</p>
+                        <ul>
+                            <li><a>Project page</a></li>
+                            <li><a>Github link</a></li>
+                            <li><a>Store listing</a></li>
+                            <li><a>Other link</a></li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+</main>
+<footer>
+    <div class="container">
+        Copyright 2018 - Daniel Krysztofiak
+        <a href="#">Disclaimer</a>
+    </div>
+</footer>
+
+<script src="js/lib/jquery-3.3.1.min.js"></script>
+<script src="js/lib/jquery.mousewheel.min.js"></script>
+<script src="js/lib/popper.min.js"></script>
+<script src="js/lib/bootstrap.min.js"></script>
+<!--<script src="js/lib/handlebars-v4.0.11.js"></script>-->
+<script src="js/interaction.js"></script>
+
+
+</body>
+</html>

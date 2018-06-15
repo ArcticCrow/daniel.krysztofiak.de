@@ -1,15 +1,11 @@
-
 body {
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 header {
     width: 100%;
-    height: calc(100vh - 66px);
+    height: calc(100vh);
     padding: 50px 20px 20px 20px;
-}
-header#top {
-    background: url("../img/default-bg.jpg") no-repeat fixed center;
     background-size: cover;
 }
 
@@ -37,11 +33,6 @@ footer {
     visibility: hidden;
 }
 
-#default {
-    background: url("../img/landing-bg.jpg") no-repeat fixed center;
-    background-size: cover;
-}
-
 section {
     transition-duration: 500ms;
     background-size: cover;
@@ -52,16 +43,51 @@ section > div > *{
     height: 100vh;
 }
 
-#programming {
-    background: url("../img/programming-bg.jpg") no-repeat fixed center;
-}
-#game-development {
-    background: url("../img/game-development-bg.jpg") no-repeat fixed center;
-}
-#game-design {
-    background: url("../img/game-design-bg.jpg") no-repeat fixed center;
+#landing-header { background: url("../assets/img/landing-bg.jpg") no-repeat fixed center; }
+#programming-header { background: url("../assets/img/programming-bg.jpg") no-repeat fixed center; }
+#game-development-header { background: url("../assets/img/game-development-bg.jpg") no-repeat fixed center; }
+#game-design-header { background: url("../assets/img/game-design-bg.jpg") no-repeat fixed center; }
+
+a.page-nav-link, a.page-nav-link:visited{
+    position: absolute;
+    text-align: center;
+    text-decoration: none;
+    color: white;
 }
 
-#programming, #game-development, #game-design {
-    display: none;
+a#down-button {bottom:0;left: 0;}
+a#up-button {top:0;left: 0;}
+a#right-button {top: 0;right: 0;}
+a#left-button {top: 0;left: 0;}
+a#down-button div, a#up-button div {
+    position: relative;
+    width: 100vw;
+    height: 5vh;
+}
+a#right-button div, a#left-button div {
+    position: relative;
+    bottom: -50%;
+    width: 5vh;
+    height: 100vh;
+}
+a#down-button span, a#up-button span, a#right-button span, a#left-button span {
+    top:calc(50% - 8px);
+}
+
+
+a>div {
+    background-color: transparent;
+    -webkit-transition: 1s ease-out;
+    -moz-transition: 1s ease-out;
+    -ms-transition: 1s ease-out;
+    -o-transition: 1s ease-out;
+    transition: 1s ease-out;
+}
+a>div:hover {
+    background-color: #aaaaff;
+    -webkit-transition: 1s ease-out;
+    -moz-transition: 1s ease-out;
+    -ms-transition: 1s ease-out;
+    -o-transition: 1s ease-out;
+    transition: 1s ease-out;
 }
