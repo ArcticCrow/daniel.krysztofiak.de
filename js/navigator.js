@@ -1,8 +1,8 @@
 let left, right, up, down;
-let arrows;
-let currentContentPosition, currentPagePosition;
-let pageCount, contentCount;
-let pageDir;
+let arrows, buttons;
+let currentContentPosition = 0, currentPagePosition = 0;
+let pageCount = 4, contentCount = 2;
+let pageDir = 0;
 
 async function initContent(resolve, reject, contentID = undefined) {
     return new Promise((resolve, reject) => {
@@ -48,7 +48,7 @@ async function initContent(resolve, reject, contentID = undefined) {
             }
         });
 
-        console.log(getHash());
+        //console.log(getHash());
         // 1. figure out page and swap to page, and place content
         updatePage();
 
@@ -97,9 +97,9 @@ function updateArrow(dir) {
 function changePages(targetPage = 0) {
     // Play page transition
     let dir = (pageDir > 0) ? "right" : "left";
-    console.log(targetPage, dir);
+    //console.log(targetPage, dir);
 
-    let cover = $("<div id='cover'></div>").appendTo('body').css(dir, "-100vw");
+    let cover = $("<div id='cover'></div>").appendTo('body').css(dir, (pageDir === 0) ? "0" : "-100vw");
 
     let slideIn = {};
     slideIn[dir] = "0";
@@ -110,21 +110,20 @@ function changePages(targetPage = 0) {
     $(cover).animate(slideIn, 500,function() {
         new Promise((resolve, reject) => {
             // Update contents
-            console.log("Page: " + currentPage, "ID: " + currentContentID);
             $(headerContainer).html(contents[currentPage + "-header"]).attr("id", currentPage + "-header");
             $(mainContainer).html("");
             for (let i = 0; i < contents[currentPage + "-main"].length; i++) {
                 $(mainContainer).append($(contents[currentPage + "-main"][i]).attr("id", currentPage + "-main-0"));
             }
+            updateContent();
             resolve();
-        }).then(
-            $(cover).animate(slideOut, 500, function() {
+        }).then(() => {
+            $(cover).animate(slideOut, 500, function () {
                 cover.remove();
-                updateContent();
-        }));
+            });
+            console.log("Page: " + currentPage, "\nID: " + currentContentID);
+        });
     });
-
-
 }
 function scrollToContent(position = 0) {
     // Smooth scroll to element or position
@@ -134,7 +133,10 @@ function scrollToContent(position = 0) {
         console.log("Scrolling to " + contentID.attr("id"));
         let targetY = contentID.offset().top;
         $('html, body').animate({scrollTop: targetY},
-            function() {document.location.hash = contentID.attr("id");});
+            () => {
+            document.location.hash = contentID.attr("id");
+            //console.log("Page: " + currentPage, "\nID: " + currentContentID);
+            });
     } else {
         console.warn(contentID, "not found");
     }
@@ -158,7 +160,7 @@ function updatePage(pageName) {
 
     // No need to change page if already active
     if (pageName === currentPage) {
-        console.log("Page " + pageName + " is already active" + currentPage + "!");
+        console.warn("Page " + pageName + " is already active" + currentPage + "!");
         return;
     }
 
@@ -173,9 +175,9 @@ function updatePage(pageName) {
     left = (currentPagePosition + pageCount - 1) % pageCount;
     right = (currentPagePosition + pageCount + 1) % pageCount;
 
-    console.log("Page position: " + currentPagePosition + " (" + currentPage + ")\n",
+    /*console.log("Page position: " + currentPagePosition + " (" + currentPage + ")\n",
         "Previous: " + left + " (" + contentMap.layout[left] +")\n",
-        "Next: " + right + " (" + contentMap.layout[right] +")");
+        "Next: " + right + " (" + contentMap.layout[right] +")");*/
 
     pageContentMap = [currentPage + "-header"];
     for (let i = 0; i < contentMap[currentPage].main.length; i++) {
@@ -183,7 +185,7 @@ function updatePage(pageName) {
     }
     pageContentMap.push("bottom");
 
-    console.log(pageContentMap);
+    // console.log(pageContentMap);
 
     changePages(currentPagePosition);
 }
@@ -195,7 +197,7 @@ function updateContent(contentID) {
     }
     let regex = new RegExp ("(" + pageContentMap.join("|") + ")","i");
     let contentMatch = contentID.match(regex);
-    console.log(contentID, regex, contentMatch);
+    // console.log(contentID, regex, contentMatch);
 
     // Test for listed content id successful?
     if (contentMatch !== null) {
@@ -207,7 +209,7 @@ function updateContent(contentID) {
 
     // No need to change content if already active
     if (currentContentID === contentID) {
-        console.log("Page " + contentID + " is already active" + currentContentID + "!");
+        console.warn("Page " + contentID + " is already active" + currentContentID + "!");
         return;
     }
 
@@ -222,9 +224,28 @@ function updateContent(contentID) {
     up = (currentContentPosition + contentCount - 1) % contentCount;
     down = (currentContentPosition + contentCount + 1) % contentCount;
 
-    console.log("Content position: " + currentContentPosition + " (" + currentContentID + ")\n",
+    /*console.log("Content position: " + currentContentPosition + " (" + currentContentID + ")\n",
         "Previous: " + up + " (" + pageContentMap[up] +")\n",
-        "Next: " + down + " (" + pageContentMap[down] +")");
+        "Next: " + down + " (" + pageContentMap[down] +")");*/
+
+    let shortcuts = $(".shortcut");
+    if (shortcuts.length > 0) {
+        buttons = {
+            "landing": $("#shortcut-landing").on("click", ()=>{
+                updatePage("landing");
+            }),
+            "programmer": $("#shortcut-programmer").on("click", ()=>{
+                updatePage("programmer");
+            }),
+            "game-developer": $("#shortcut-game-developer").on("click", ()=>{
+                updatePage("game-developer");
+            }),
+            "game-designer": $("#shortcut-game-designer").on("click", ()=>{
+                updatePage("game-designer");
+            })
+        };
+        console.log(buttons);
+    }
 
     scrollToContent(currentContentPosition);
 }

@@ -38,7 +38,6 @@ async function load () {
             contents["arrows"] = data;
         }));
 
-
         // kick of getters for modals
         for (const modalKey in contentMap.modals) {
             gettersArray.push($.get(root + contentMap.modals[modalKey], (data) => {

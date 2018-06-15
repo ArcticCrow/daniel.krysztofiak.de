@@ -12,19 +12,19 @@
         "folder":"programmer-page/",
         "header": "header.html",
         "nav": "nav.html",
-        "main": ["portfolio/this-e-app.html"]
+        "main": ["portfolio/this-e-app.html"/*, "portfolio/indierogue.html"*/]
     },
     "game-developer": {
         "folder":"game-developer-page/",
         "header": "header.html",
         "nav": "nav.html",
-        "main": ["portfolio/adventure-fiends.html"]
+        "main": ["portfolio/adventure-fiends.html"] /*, "portfolio/intergoolactic.html", "portfolio/avas-adventure.html", "portfolio/tower-of-babel.html"*/
     },
     "game-designer": {
         "folder":"game-designer-page/",
         "header": "header.html",
         "nav": "nav.html",
-        "main": ["portfolio/tower-of-babel.html"]
+        "main": [/*"portfolio/adventure-fiends.html",*/ "portfolio/tower-of-babel.html"]
     },
     "modals": {
         "contact": "contact.modal.html"
